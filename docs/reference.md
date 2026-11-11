@@ -3005,7 +3005,9 @@ curl -s http://127.0.0.1:3425/v1/magpie/usage/requests \
   can be backfilled; it may not be before 2000-01-01T00:00:00Z or more
   than an hour ahead.
 - **Repeats:** a `rid` already reported is skipped, after a restart too,
-  so a batch can be sent again.
+  so a batch can be sent again. The ids to check are read from the log's
+  reported rows, right where the page counts them, with no separate
+  index to maintain.
 - **Refusals:** a bad record refuses the whole post with a 400 naming it,
   as `error.index` and `error.param` (`record 3: in: must not be
   negative`), and nothing is written.
